@@ -16,14 +16,28 @@
           {
             "group": "Getting started",
             "pages": [
-              "welcome",
               "quickstart-for-buyers",
               "quickstart-for-sellers"
             ]
           }
         ]
       }
-    ]
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Documentation",
+          "href": "https://docs.laissez.xyz",
+          "icon": "book-open-cover"
+        },
+        {
+          "anchor": "Platform",
+          "href": "https://app.laissez.xyz",
+          "icon": "rocket"
+        }
+      ]
+    }
+
   },
   "logo": {
     "light": "/logo/laissez-logo.png",
@@ -36,13 +50,13 @@
         "href": "https://cal.com/itsmcollins/laissez"
       },
       {
-        "label": "Let's talk",
+        "label": "Say hello",
         "href": "mailto:matthew@laissez.xyz"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
+      "label": "Platform",
       "href": "https://app.laissez.xyz"
     }
   },
