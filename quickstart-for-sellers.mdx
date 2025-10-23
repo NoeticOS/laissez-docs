@@ -1,0 +1,46 @@
+---
+title: "Quickstart for Sellers"
+description: "Start selling with Laissez"
+---
+
+## Charge for your MCP tools
+
+Use `LaissezMCPProvider` to enforce payment when agents call your MCP tools. Set prices per tool and receive settlement via x402 to your wallet.
+
+### 1) Install
+```bash
+uv add laissez
+```
+
+### 2) Wrap your MCP server
+```python
+import random, secrets
+from fastmcp import FastMCP
+from eth_account import Account
+from laissez.types import PaidTool
+from laissez.mcp import LaissezMCPProvider
+
+mcp = FastMCP("Dice Roller")
+
+@mcp.tool
+def roll_die() -> int:
+    return random.randint(1, 6)
+
+@mcp.tool
+def multiply(a: int, b: int) -> int:
+    return a * b
+
+paid_tools = [
+    PaidTool(name="roll_die", price=0.001, description="Roll a die"),
+    PaidTool(name="multiply", price=0.005, description="Multiply numbers"),
+]
+
+wallet = Account.create(secrets.token_urlsafe(32))
+
+app = LaissezMCPProvider(mcp=mcp, tools=paid_tools, wallet=wallet)
+app.run()
+```
+
+### 3) Next steps
+- Share your MCP endpoint with buyers/agents
+- **Coming soon**: Track your revenue and payouts

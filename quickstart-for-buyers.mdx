@@ -1,0 +1,36 @@
+---
+title: "Quickstart for Buyers"
+description: "Start buying with Laissez"
+---
+
+## Pay for MCP tools with Laissez
+
+Use `LaissezMCPConnector` to connect your agents to paid MCP servers. All payments are settled with x402 and visible in your Laissez dashboard.
+
+### 1) Install
+```bash
+uv add laissez
+```
+
+### 2) Connect your agent
+```python
+from pydantic_ai import Agent
+from laissez.mcp import LaissezMCPConnector
+
+server = LaissezMCPConnector(url="https://dice-roll.laissez.xyz/mcp")
+
+agent = Agent(
+    model="openai:gpt-5-mini",
+    instructions="Show your working out",
+    toolsets=[server],
+)
+
+result = await agent.run("Roll a dice twice then multiply")
+print(result.output)
+```
+
+### 3) Get your API key
+- Get an API key and view your agent's spending at [app.laissez.xyz](https://app.laissez.xyz)
+
+### 4) Next steps
+- Want to build your own paid MCP server? Try the [Quickstart for Sellers](quickstart-for-sellers).
